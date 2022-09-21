@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.SQLite;
+using System.IO;
 
 namespace SQLite_Tutorial
 {
@@ -9,7 +10,12 @@ namespace SQLite_Tutorial
         {
             SQLiteConnection sqlite_conn;
             sqlite_conn = CreateConnection();
-            CreateTable(sqlite_conn);
+
+            if(!File.Exists("database.db"))
+            {
+                CreateTable(sqlite_conn);
+            } 
+            
             InsertData(sqlite_conn);
             ReadData(sqlite_conn);
         }
