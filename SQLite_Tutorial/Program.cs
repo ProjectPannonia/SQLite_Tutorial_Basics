@@ -9,8 +9,11 @@ namespace SQLite_Tutorial
         static void Main(string[] args)
         {
             SQLiteConnection sqlite_conn;
-            sqlite_conn = CreateConnection();
+            if (!File.Exists("database.db"))
+                sqlite_conn = CreateConnection();
 
+            
+            /*
             if(!File.Exists("database.db"))
             {
                 CreateTable(sqlite_conn);
@@ -18,6 +21,7 @@ namespace SQLite_Tutorial
             
             InsertData(sqlite_conn);
             ReadData(sqlite_conn);
+            */
         }
 
         private static SQLiteConnection CreateConnection()
